@@ -99,3 +99,34 @@ PIO（Program I/O）
 
 
 ​                                                               
+
+## 第五节
+
+#### MTTF & AVALIABILITY
+
+​	MTTF: mean time to failure
+
+​	MTTR: mean time to repair
+
+​	MTBF: mean time between failure
+
+​	MTBF=MTTF+MTTR
+
+#### Redundancy
+
+- Coding for incremental redundancy
+  - Hamming distance
+- Replication in bridge building
+- Voting  
+- Repair
+
+#### Durable Storge
+
+- RAID 1 : 两份一样的，并且有一个clerk，隔段时间check一下是否一样 
+- RAID 4 : (Dedicated Parity Disk) 通过几个disk计算出一个disk 作为 parity
+- RAID 5 : (Spread Out the Parity)
+
+#### SYNC 
+
+- sync 会直接让数据直接写到硬盘里的，不会写到block cache里
+
