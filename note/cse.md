@@ -86,7 +86,7 @@ PIO（Program I/O）
 
 
 
-#### PIO 与 MMIO（Memory Mapped IO）
+#### PIO(in/out) 与 MMIO(load/store)（Memory Mapped IO）
 
 
 
@@ -130,3 +130,56 @@ PIO（Program I/O）
 
 - sync 会直接让数据直接写到硬盘里的，不会写到block cache里
 
+
+
+## 第七节
+
+#### The BUS
+
+MMU（将physical address转换为virtual address）在CPU里面，出了cpu用的就是physical address，所以bus上的地址是physical address。
+
+
+
+#### Bus Transaction
+
+Sync	--	a shared clock
+
+Async	--	an acknowledge line : ready & acknowledge
+
+
+
+#### physical address assigned
+
+- Memory physical address bu **BIOS**
+- Some devices : fixed for all time
+- ...
+
+
+
+#### logging / journaling (for crash consistence)
+
+
+
+Workload: Creating and writing to a file
+
+
+
+Full journal mode (data and meta data all write in journal area)	--	too slow
+
+Ordered journal mode (only write metadata to journal area)	--	default data may be overwriten
+
+Data Wirte (D)	->	Logging Metadata(Jm)	->	Logging Commit(Jc)	->	Checkpointing(M)
+
+
+
+#### journaling with ordering
+
+using FLUSH to guarantee the file writing order on disk platter
+
+Data Wirte (D)	->	Logging Metadata(Jm)	->	Flush	->	Logging Commit(Jc)	->	Flush	->	Checkpointing(M)
+
+
+
+#### journaling without ordering
+
+Tech #1:	checksums
