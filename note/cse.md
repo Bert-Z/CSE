@@ -183,3 +183,75 @@ Data Wirte (D)	->	Logging Metadata(Jm)	->	Flush	->	Logging Commit(Jc)	->	Flush	-
 #### journaling without ordering
 
 Tech #1:	checksums
+
+
+
+
+
+## 第八节
+
+#### RPC
+
+Message
+
+- service id
+- service parameter
+- using marshal / unmarshal
+
+
+
+Request & Reply
+
+
+
+marshal & unmarshal
+
+
+
+Client Framework
+
+-  **need to handles timing out** 
+
+Server Framework
+
+会传绝对的地址（从哪里都到哪里）
+
+
+
+#### NFS（stateless）
+
+
+
+没有记任何的状态，所以需要一个Generation number来确保file system 的 reuse 问题
+
+
+
+#### 为什么不放pathname
+
+避免reuse的问题
+
+
+
+#### rename after open 
+
+没关系，因为已经拿到fd了，已经找到了对应关系，不需要pathname这一层了。
+
+
+
+#### stateless on NFS server
+
+- reply cache	（断电，所以还得做幂等）
+- server fail between two same requests	--	做成幂等，通过绝对地址查找
+
+
+
+#### delete after open 
+
+通过generation number来避免读别的文件，（删除文件后如果是新的文件Generation number不一样）
+
+
+
+vnode
+
+
+
