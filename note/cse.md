@@ -255,3 +255,57 @@ vnode
 
 
 
+## 第九节
+
+#### RPC: Failure Handling
+
+- at least once
+
+- at most once
+
+- exactly once
+
+  
+
+#### Why RPC and C/S?
+
+- programmers make mistakes
+- mistakes propagate easily
+- enforce modularity
+
+
+
+#### What does RPC do,exactly?Can we use other ways?
+
+- Be more friendly for programmers.Don't need to learn many things like socket , http and so on.
+
+
+
+#### GFS
+
+flatter namespace在本地的缺点：文件太大（可能会是G级别的），在本地的话占用资源较多，master是只有这个简单的逻辑，所以不影响。
+
+flatter namespace在master的缺点：ls(只需要跟master通信即可)会比较慢，搜table，需要每个都查找一遍；rename directory会比较慢，也需要查找所有的directory。解决方案：存成树的结构。
+
+
+
+#### GFS Cluster
+
+Read & Write
+
+Write 不需要sync的原因：三备份（三台server机器），所以不需要写磁盘，同时崩掉的概率很低。
+
+client会cache chunk server的data，不是数据，而是存在哪个chunk server，可以不用去master
+
+
+
+磁盘顺序写和随机写速度相差100倍的量级，随机写太慢了。 
+
+
+
+#### Content Distribution
+
+content distribution network(CDN)
+
+domain name service(DNS)
+
