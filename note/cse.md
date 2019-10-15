@@ -309,3 +309,23 @@ content distribution network(CDN)
 
 domain name service(DNS)
 
+
+
+
+
+## 第十节
+
+#### DNS
+
+
+
+### Network
+
+
+
+#### Link Layer
+
+physical transmission using shared clock
+
+physical transmission without shared clock
+
