@@ -329,3 +329,64 @@ physical transmission using shared clock
 
 physical transmission without shared clock
 
+
+
+
+
+## 第十一节
+
+#### Manchestor Code
+
+0->01      1->10
+
+
+
+Isochronous(等时的) - TDM
+
+
+
+#### Error Handling
+
+error detection code : eg: **checksum** at the end
+
+what to do then (depend on the real condition)
+
+- correction code
+- ask sender to resend 
+
+
+
+#### checksum
+
+**Hamming distance** : longer the distance is, safer the code is.
+
+
+
+### Network Layer
+
+IP: Best-effort network
+
+duplicate package
+
+
+
+#### Routing
+
+routing table (IP-NIC(port) table)
+
+control-plane vs data-plane
+
+
+
+send : network_send->network_handle->link_send
+
+receive : link_receive->network_handle
+
+
+
+#### NAT
+
+NAT router : bridge the private network
+
+mapping between private IP and port
+
