@@ -1,0 +1,27 @@
+Q:	Please briefly answer the role of DNS in your own words.
+A:	DNS is the distributed database for checking out domain name and corresponding IP. We can get the IP address when we send one domain name to DNS. It's an important intermediate table.
+
+Q:	The type field have a few different values to indicate the kind of this record. What do "A", "NS" and "CNAME" mean?
+A:	"A"--An address record that specifies the IPv4 address of the domain name. If you need to point the domain name to an IP address, you need to add an A record.
+	"NS"--The domain name server records that if you need to give the subdomain to other DNS servers for resolution, you need to add an NS record.
+	"CNAME"--If you need to point the domain name to another domain name and then provide an ip address from another domain name, you will need to add a CNAME record.
+	
+Q:	How can we ask a specific dns server (instead of the default) for information about a domain name? When I use "dig www.baidu.com",the DNS server is 192.168.110.2. However if this server crashed and I have to ask the server 8.8.8.8, what command should I use?
+A:	1)We can use "dig @{specific_dns_address} {domain_name}"
+	2)Using the command "dig @8.8.8.8 www.baidu.com"
+	
+Q:	Do you know the process of solving domain name "lirone.csail.mit.edu"? You need to go through the steps of resolving a particular hostname, mimicing a standard recursive query. Assuming it knows nothing else about a name, a DNS resolver will ask a well-known root server. The root servers on the Internet are in the domain root-servers.net. You can use "%dig . ns" to get the list of 13 root servers.You can show us the result of each step or briefly introduce your idea.[Hint: you should start from "edu"]
+A:	the steps are as following:
+	"dig . ns"  
+	->  "dig edu. @a.root-servers.net"  
+	->  "dig edu. @a.edu-servers.net"  
+	->  "dig mit.edu. @a.edu-servers.net"  
+	->  "dig csail.mit.edu. @usw2.akam.net"  
+	->  "dig lirone.csail.mit.edu. @auth-ns0.csail.mit.edu."
+	
+Q:	Please explain the above phenomenon.
+A:	When we try the command "dig www.twitter.com +trace", its server is always changing, however if we visit "www.baidu.com", its server is stable. When we use 1.0.0.0 as server, both of these are timed out.(no servers could be reached) But I can still ping 1.0.0.0 and get the response. Maybe it is caused by the firewall of Chinese network.
+
+ 
+Q:	The ips which dig returns to you belong to google indeed. Give the reason for the above phenomenon.
+A:	They can't be reached as well.
