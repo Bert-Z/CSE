@@ -390,3 +390,87 @@ NAT router : bridge the private network
 
 mapping between private IP and port
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Multiple transaction
+
+### Two-phase Commit
+
+phase-1: preparation/voting
+
+phase-2: commitment
+
+
+
+3-N protocal
+
+​                                                                                                                                                                                                                                                                                                                                                                                        
+
+
+
+
+
+
+
+sharding: use mutiple machines to replace one machines -> MTTF lower
+
+
+
+
+
+
+
+
+
+### View Server
+
+each contains the view number , the primary server and the backup server
+
+will alert which one is primary server.
+
+each server will sent heart beats to the view server.
+
+
+
+Some failures
+
+before S2 knows it's primary, it'll **reject** any requests from clients
+
+
+
+
+
+### Paxos
+
